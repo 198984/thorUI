@@ -321,7 +321,9 @@
 .tui-checkbox:checked{
 	
 }
-
+.tui-cells::after{
+	display: none;
+}
 .tui-top40 {
   margin-top: 40upx;
 }
