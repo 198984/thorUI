@@ -64,6 +64,7 @@
 					setTimeout(() => {
 						let pwd = this.numberArr.join('')
 						this.closeKeyboard();
+						uni.hideLoading()
 						this.tui.toast("您输入的密码为：" + pwd);
 					}, 800);
 				}
