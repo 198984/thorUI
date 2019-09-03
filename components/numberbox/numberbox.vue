@@ -162,7 +162,9 @@
 		-moz-osx-font-smoothing: grayscale;
 		padding: 10upx;
 	}
-
+	input{
+		padding: 0 !important;
+	}
 	.tui-icon-reduce:before {
 		content: "\e691";
 	}

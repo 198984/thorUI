@@ -316,13 +316,13 @@
 
 	.tui-banner-swiper {
 		width: 100%;
-		height: 300rpx;
+		height: 300rpx !important;
 		position: relative;
 	}
 
 	.tui-slide-image {
 		width: 100%;
-		height: 300rpx;
+		height: 300rpx !important;
 		display: block;
 	}
 
