@@ -56,7 +56,10 @@
     <view class="tui-upload-box">
       <view class="tui-upload-item" v-for="(item,index) in files" :key="index">
         <image :src="item" class='tui-upload-img' @tap="previewImage" mode="aspectFill" :id="item"></image>
-        <tui-icon color="#ed3f14" :size="24" name="close-fill" class="tui-upload-del" :index="index" @click="deleteImage"></tui-icon>
+        <view class="tui-upload-del">
+        	<tui-icon color="#ed3f14" :size="24" name="close-fill" :index="index" @click="deleteImage"></tui-icon>
+        </view>
+		
       </view>
       <view class="tui-upload-item tui-upload-add" v-if="files.length < 9" hover-class="tui-opcity" :hover-stay-time="150" @tap="chooseImage">
         <text>+</text>
