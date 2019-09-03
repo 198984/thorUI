@@ -2,7 +2,7 @@
 	<view class="tui-numberbox-class tui-numberbox">
 		<view class="tui-numbox-icon tui-icon-reduce " :class="[disabled || min>=value?'tui-disabled':'']" @tap="reduce"
 		 :style="{color:iconcolor,fontSize:px(iconsize)}"></view>
-		<input type="number" v-model="val" :disabled="disabled" @input="blur" class="tui-num-input" :style="{color:color,fontSize:px(iconsize),background:bgcolor,height:px(height),width:px(width)}" />
+		<input v-if="show" type="number" v-model="val" :disabled="disabled" @input="blur" class="tui-num-input" :style="{color:color,fontSize:px(iconsize),background:bgcolor,height:px(height),width:px(width)}" />
 		<view class="tui-numbox-icon tui-icon-plus" :class="[disabled || value>=max?'tui-disabled':'']" @tap="plus" :style="{color:iconcolor,fontSize:px(iconsize)}"></view>
 	</view>
 </template>
@@ -67,7 +67,8 @@
 		},
 		data() {
 			return {
-				val:this.value
+				val:this.value,
+				show: true
 			};
 		},
 		watch:{
@@ -75,11 +76,16 @@
 				this.val = n
 			},
 			val(n){
-				console.log(n)
-				if(n > this.max){
-					n = this.max
+				if(n*1 >= this.max){
+					this.show = false
+					this.val = this.max
+					this.value = this.max
+					setTimeout(()=>{
+						this.show = true
+					})
+				} else {
+					this.val = n
 				}
-				this.val = n
 			}
 		},
 		methods: {
@@ -162,9 +168,7 @@
 		-moz-osx-font-smoothing: grayscale;
 		padding: 10upx;
 	}
-	input{
-		padding: 0 !important;
-	}
+
 	.tui-icon-reduce:before {
 		content: "\e691";
 	}
@@ -178,7 +182,9 @@
 		display: inline-flex;
 		align-items: center;
 	}
-
+input{
+	padding: 0 !important;
+}
 	.tui-num-input {
 		text-align: center;
 		margin: 0 10upx;

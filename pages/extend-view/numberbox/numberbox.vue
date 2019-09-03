@@ -107,7 +107,9 @@
 		color: #7a7a7a;
 		padding-top: 18upx;
 	}
-
+	input{
+		padding: 0 !important;
+	}
 	.tui-number-box {
 		padding: 40upx;
 		box-sizing: border-box;
